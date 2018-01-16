@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <title>arrow-down</title>
+  <g id="Bounds">
+    <rect width="16" height="16" fill="none"/>
+  </g>
+  <g id="Icons">
+    <path d="M7.5,10.707,3.146,6.354a.5.5,0,0,1,.708-.708L7.5,9.293l3.646-3.647a.5.5,0,0,1,.708.708Z" fill="#fff"/>
+  </g>
+</svg>

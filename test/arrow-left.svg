@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <title>arrow-left</title>
+  <g id="Bounds">
+    <rect width="16" height="16" fill="none"/>
+  </g>
+  <g id="Icons">
+    <path d="M9,12a.5.5,0,0,1-.354-.146L4.293,7.5,8.646,3.146a.5.5,0,0,1,.708.708L5.707,7.5l3.647,3.646A.5.5,0,0,1,9,12Z" fill="#fff"/>
+  </g>
+</svg>

@@ -2,7 +2,7 @@
   "name": "svg-groomer",
   "version": "0.1.0",
   "description": "Create Design and Production sets of your SVG icons, equivalent to Google's Material icons.",
-  "main": "svg-groomer.js",
+  "main": "./lib/svg-groomer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/sigtm/svg-groomer#readme",
   "dependencies": {
+    "js-yaml": "^3.10.0",
     "svgo": "^1.0.3"
   }
 }
