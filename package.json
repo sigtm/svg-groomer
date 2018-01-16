@@ -1,0 +1,27 @@
+{
+  "name": "svg-groomer",
+  "version": "0.1.0",
+  "description": "Create Design and Production sets of your SVG icons, equivalent to Google's Material icons.",
+  "main": "svg-groomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigtm/svg-groomer.git"
+  },
+  "keywords": [
+    "svg",
+    "icons",
+    "svgo"
+  ],
+  "author": "Sigurd Mannsaker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sigtm/svg-groomer/issues"
+  },
+  "homepage": "https://github.com/sigtm/svg-groomer#readme",
+  "dependencies": {
+    "svgo": "^1.0.3"
+  }
+}
