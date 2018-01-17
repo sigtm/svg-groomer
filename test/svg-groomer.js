@@ -90,7 +90,11 @@ function groom() {
 
 	for (let svg of svgList) {
 
-		const svgData = fs.readFileSync(svg, 'utf8');
+		let svgData = fs.readFileSync(svg, 'utf8');
+
+		// Remove fill attributes except fill="none", to preserve
+		// unfilled elements for alignment of placed SVGs
+		svgData = svgData.replace(/\s?fill="(?!none)[^"]*"/gi, '');
 
 		const promise = svgo.optimize(svgData).then(function(result) {
 			fs.writeFileSync(paths.design + '/' + svg, result.data);
@@ -108,11 +112,9 @@ function groom() {
 
 			let svgData = fs.readFileSync(paths.design + '/' + svg, 'utf8');
 
-			// Remove any <path> with fill="none"
-			svgData = svgData.replace(/<path [^>]*fill="none"[^>]*>/gi, '');
-
-			// Remove any remaining fill attributes
-			svgData = svgData.replace(/fill="[^"]*"/gi, '');
+			// Remove elements with fill="none", as we don't want alignment
+			// rectangles in our production files
+			svgData = svgData.replace(/<[^>]*fill="none"[^>]*>/gi, '');
 
 			fs.writeFileSync(paths.production + '/' + svg, svgData);
 

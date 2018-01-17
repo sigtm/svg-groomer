@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <title>arrow-up</title>
-  <g id="Bounds">
-    <rect width="16" height="16" fill="none"/>
-  </g>
-  <g id="Icons">
-    <path d="M11.5,9.5a.5.5,0,0,1-.354-.146L7.5,5.707,3.854,9.354a.5.5,0,0,1-.708-.708L7.5,4.293l4.354,4.353A.5.5,0,0,1,11.5,9.5Z" fill="#fff"/>
-  </g>
-</svg>
