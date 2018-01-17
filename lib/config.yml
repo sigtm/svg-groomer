@@ -1,4 +1,11 @@
-# replace default config
+# svg-groomer defaults
+
+svgGroomer:
+  source: "."
+  design: "Design"
+  production: "Production"
+
+# svgo config
 
 # multipass: true
 # full: true

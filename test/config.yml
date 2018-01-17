@@ -1,12 +1,14 @@
-# replace default config
+# svg-groomer defaults
+
+svgGroomer:
+  source: "."
+  design: "Design"
+  production: "Production"
+
+# svgo config
 
 # multipass: true
 # full: true
-
-svgGroomer:
-  source: "01 Export"
-  design: "02 Design"
-  production: "03 Production"
 
 plugins:
 
