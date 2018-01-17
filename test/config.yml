@@ -1,9 +1,9 @@
 # svg-groomer defaults
 
 svgGroomer:
-  source: "."
-  design: "Design"
-  production: "Production"
+  source: "01 Export"
+  design: "02 Design"
+  production: "03 Production"
 
 # svgo config
 
