@@ -3,6 +3,11 @@
 # multipass: true
 # full: true
 
+svgGroomer:
+  source: "01 Export"
+  design: "02 Design"
+  production: "03 Production"
+
 plugins:
 
   # - name

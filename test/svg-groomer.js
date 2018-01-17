@@ -13,23 +13,54 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const SVGO = require('svgo');
 
+
 // Arguments
-const paths = {
-	source: process.argv[2] || '.',
-	design: process.argv[3] || './Design',
-	production: process.argv[4] || './Production',
-	config: process.argv[5] || './config.yml'
-};
-
-// Parse config
+let args = [];
+let paths = {};
 let config = {};
+let configPath = './config.yml';
 
+
+// Move arguments that aren't a .yml path to the args array.
+// If a .yml path is provided (in any order), use it for config.
+for (let i = 2; i < process.argv.length; i++) {
+
+	let a = process.argv[i];
+
+	if (a.indexOf('yml') !== -1) {
+		configPath = a;
+	}
+
+	else {
+		args.push(a);
+	}
+
+}
+
+
+// Parse the config file, if it exists
 try {
-	config = yaml.safeLoad(fs.readFileSync(paths.config));
+	config = yaml.safeLoad(fs.readFileSync(configPath));
 }
 catch (error) {
-	console.log(paths.config + " is not a valid YAML file. Using defaults.");
+	console.log('Using default config.');
 }
+
+
+// Order of priority for source & destination paths:
+//
+// 1. Command line arguments
+// 2. Paths defined in the config file
+// 3. Defaults
+//
+paths.source = args[0] || (config.svgGroomer && config.svgGroomer.source) || '.';
+paths.design = args[1] || (config.svgGroomer && config.svgGroomer.design) || './Design';
+paths.production = args[2] || (config.svgGroomer && config.svgGroomer.production) || './Production';
+
+console.log(paths);
+
+// For tidiness sake, delete svgGroomer from config object before we pass it to SVGO
+delete config.svgGroomer;
 
 // SVGO
 const svgo = new SVGO(config);
@@ -90,7 +121,7 @@ function groom() {
 
 	for (let svg of svgList) {
 
-		let svgData = fs.readFileSync(svg, 'utf8');
+		let svgData = fs.readFileSync(paths.source + '/' + svg, 'utf8');
 
 		// Remove fill attributes except fill="none", to preserve
 		// unfilled elements for alignment of placed SVGs
