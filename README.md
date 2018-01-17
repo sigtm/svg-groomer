@@ -10,15 +10,17 @@ Because if your workflow is anything like mine, even the excellent SVGO and SVG 
 
 Consider the following typical output from Illustrator:
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-     <title>checkmark</title>
-     <g id="Bounds">
-     <rect width="16" height="16" fill="none"/>
-     </g>
-     <g id="Icons">
-     <path d="..." fill="#fff"/>
-     </g>
-    </svg>
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <title>checkmark</title>
+  <g id="Bounds">
+    <rect width="16" height="16" fill="none"/>
+  </g>
+  <g id="Icons">
+    <path d="..." fill="#fff"/>
+  </g>
+</svg>
+```
 
 We include the `<rect>` with `fill="none"` so that when we drop it into Sketch or whatever, it gives us a 16 x 16 group with the path correctly positioned inside it. Without it we would just get the shape itself, and manually positioning each icon inside a 16 x 16 symbol is a pain.
 
@@ -29,10 +31,12 @@ But we need to:
 
 Like this, but without spaces or line breaks (just included here for readability):
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-    	<path fill="none" d="M0 0h16v16H0z"/>
-    	<path d="..."/>
-    </svg>
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <path fill="none" d="M0 0h16v16H0z"/>
+  <path d="..."/>
+</svg>
+```
 
 This gets saved to our "Design" folder. 
 
