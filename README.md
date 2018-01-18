@@ -5,7 +5,9 @@ This is a simple module that takes your raw SVG files from Illustrator/Sketch an
 
 ## But why?
 
-Because if your workflow is anything like mine, even the excellent SVGO and SVG Cleaner leave some manual work if you need to keep both design and production versions of your SVG icons.
+Because manually duplicating, renaming and running optimizers on your folders gets tedious, especially when you're continuously iterating on your icons. And even the excellent SVGO and SVG Cleaner leave some manual work if you need to keep both design and production versions of your SVG icons.
+
+Which you do, if you're anything like me and use both Sketch and Framer (more on that further down...)
 
 
 ## OK, so what does it do?
@@ -42,9 +44,11 @@ Like this, but without spaces or line breaks (just included here for readability
 
 This gets saved to our "Design" folder. 
 
-And for production we simply remove the fill-less elements used for alignment and save those files to our "Production" folder.
+Then we simply remove the fill-less elements used for alignment and save those files to our "Production" folder.
 
-What we have now is pretty close to the Design and Production folders you'll find in Google's Material Icons repo – with none of the manual copy/pasting between folders, optimizing, then copy/pasting again, then removing unnecessary elements from production.
+Crucially, this last step lets you drop them into Framer's Design mode and have them behave exactly like the ones in the Icons menu, allowing you to change their color in Framer.
+
+That's cause what we have now is pretty close to the Design and Production folders you'll find in Google's Material Icons repo, which Framer uses.
 
 
 ## Neat, how do I install it?
