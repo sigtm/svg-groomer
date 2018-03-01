@@ -4,6 +4,7 @@ svgGroomer:
   source: "."
   design: "Design"
   production: "Production"
+  fill: "remove"
 
 # svgo config
 

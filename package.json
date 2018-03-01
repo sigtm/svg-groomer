@@ -26,6 +26,7 @@
   "homepage": "https://github.com/sigtm/svg-groomer#readme",
   "dependencies": {
     "js-yaml": "^3.10.0",
-    "svgo": "^1.0.3"
+    "svgo": "^1.0.3",
+    "yargs": "^11.0.0"
   }
 }

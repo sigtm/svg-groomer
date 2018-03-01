@@ -5,9 +5,14 @@ This is a simple module that takes your raw SVG files from Illustrator/Sketch an
 
 ## But why?
 
-Because manually duplicating, renaming and running optimizers on your folders gets tedious, especially when you're continuously iterating on your icons. And even the excellent SVGO and SVG Cleaner leave some manual work if you need to keep both design and production versions of your SVG icons.
+1. Automatically remove fills, or replace with `currentColor`, so you can set colors dynamically – in Framer's Design mode for example 🎨.
 
-Which you do, if you're anything like me and use both Sketch and Framer (more on that further down...)
+2. Have any fill-less alignment paths (needed for preserving the icon's artboard position when dropping into Sketch) automatically removed for production
+
+3. Manually duplicating files and running them through SVG optimizers every time you re-export sucks.
+
+All in all, it just saves you a lot of tedious labor. Just export, run `svg-groomer` in Terminal and be done with it. SVG Groomer uses SVGO for general SVG optimization.
+
 
 
 ## OK, so what does it do?
@@ -26,12 +31,12 @@ Consider the following typical output from Illustrator:
 </svg>
 ```
 
-We include the `<rect>` with `fill="none"` so that when we drop it into Sketch or whatever, it gives us a 16 x 16 group with the path correctly positioned inside it. Without it we would just get the shape itself, and manually positioning each icon inside a 16 x 16 symbol is a pain.
+We include the `<rect>` with `fill="none"` so that when we drop it into Sketch for example, it gives us a 16 x 16 group with the path correctly positioned inside it. Without it we would just get the shape itself – and manually positioning each icon inside a 16 x 16 symbol, sometimes on sub-pixel values, is a pain.
 
 But we need to:
 
 1. Optimize it (svg-groomer uses SVGO)
-1. Remove any specific fill colors (like `fill="#fff"` ) so we can set it to anything we want in CSS
+2. Remove any specific fill colors (like `fill="#fff"` ) so we can set it to anything we want in CSS/Framer/etc.
 
 Like this, but without spaces or line breaks (just included here for readability):
 
@@ -42,13 +47,13 @@ Like this, but without spaces or line breaks (just included here for readability
 </svg>
 ```
 
-This gets saved to our "Design" folder. 
+You can also swap your fills for `currentColor` or any other string instead of removing them, if you prefer. This gets saved to our "Design" folder. 
 
-Then we simply remove the fill-less elements used for alignment and save those files to our "Production" folder.
+Then we simply remove the `fill="none"` paths used for alignment and save those files to our "Production" folder.
 
 Crucially, this last step lets you drop them into Framer's Design mode and have them behave exactly like the ones in the Icons menu, allowing you to change their color in Framer.
 
-That's cause what we have now is pretty close to the Design and Production folders you'll find in Google's Material Icons repo, which Framer uses.
+That's cause what we have now is pretty close to the Design and Production versions you'll find in Google's Material Icons set, which Framer uses.
 
 
 ## Neat, how do I install it?
@@ -65,18 +70,18 @@ In Terminal, go to the folder you export your SVG icons to (protip: [add it to t
 
 *Arguments*
 
-`svg-groomer [source folder] [design folder] [production folder] [config.yml]`
+`svg-groomer --source="Source folder" --design="Design folder" --production="Production folder" --fill=currentColor --config=myConfig.yml`
 
-They're all optional, but the three folders have to be entered in that order.
+All arguments are optional. If you specify a `--fill`, fills are not removed but instead substituted for whatever string you give it.
 
 So you might not want the output folders to be inside your export folder, in which case you'd just go to the parent folder instead, and do:
 
-`svg-groomer 'My Export Folder'`
+`svg-groomer 'Source folder'`
 
 *Config*
 
-You probably don't want to enter your own folders manually every time. Instead, you might duplicate [config.yml](./lib/config.yml) and add them there. If there is a `config.yml` in the same folder you run svg-groomer in you don't need to specify a path. Otherwise, just pass it as an argument:
+The config file is passed on to SVGO, but can also include an svgGroomer object so you don't have to pass your arguments from the command line every time. Just duplicate [config.yml](./lib/config.yml) to get you started.
 
-`svg-groomer myConfig.yml`
+If there is a `config.yml` in the same folder you run svg-groomer in you don't need to specify a path. Otherwise, use the `--config` flag as shown above.
 
-_Note: The rest of config.yml is [SVGO config](https://github.com/svg/svgo/blob/master/.svgo.yml). Feel free to tweak it, but note the two disabled plugins. I can only guarantee that it works with these default SVGO settings._
+_Note: Feel free to tweak the SVGO config, but note the two disabled plugins. I can only guarantee that it works with these default SVGO settings. For an updated reference, see the [SVGO config](https://github.com/svg/svgo/blob/master/.svgo.yml) in their repo._
