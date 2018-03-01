@@ -1,6 +1,6 @@
 {
   "name": "svg-groomer",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Create Design and Production sets of your SVG icons, equivalent to Google's Material icons.",
   "main": "./lib/svg-groomer.js",
   "scripts": {
